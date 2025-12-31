@@ -47,8 +47,9 @@ Create `.env.local` from `.env.example`.
 - Run `npm run build` to verify locally.
 - Deploy to Vercel or another Next-capable host; include `CONTACT_WEBHOOK_URL` if needed.
 - Vercel setup: connect repo, set `SITE_URL`, SMTP vars, and contact webhook (optional) in project settings; build command `npm run build`, output `.next`.
-- Health/uptime: monitor `/api/health` (returns JSON) and configure alerts in your monitoring tool.
+- Health/uptime: monitor `/api/health` (returns JSON) and configure alerts in your monitoring tool (e.g., UptimeRobot/StatusCake).
 - Roll forward/back: prefer revert or redeploy previous commit in Vercel; keep lockfile and CI green before deploy.
+- Images: use `next/image` for new assets, include `alt`, and keep SVGs/patterns lightweight.
 
 ## Security & Maintenance
 - Track dependency updates monthly; prioritize Next.js, React, TypeScript, and eslint-config-next.
