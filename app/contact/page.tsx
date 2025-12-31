@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import CTA from "@/components/CTA";
 import ContactForm from "@/components/ContactForm";
 import Section from "@/components/Section";
-import { loadContent } from "@/lib/content";
-import { getSiteConfig } from "@/lib/site";
+import { getContent } from "@/lib/content";
+import { getCachedSiteConfig } from "@/lib/site";
 import { buildPageMetadata } from "@/lib/metadata";
 
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
-  const [content, site] = await Promise.all([loadContent("contact"), getSiteConfig()]);
+  const [content, site] = await Promise.all([getContent("contact"), getCachedSiteConfig()]);
   return buildPageMetadata(content, site);
 }
 
 export default async function ContactPage() {
-  const content = await loadContent("contact");
+  const content = await getContent("contact");
 
   return (
     <Section heading={content.title} kicker={content.kicker}>

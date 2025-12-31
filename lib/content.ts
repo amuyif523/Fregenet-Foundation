@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import { cache } from "react";
 
 export type PageContent = {
   slug: string;
@@ -66,3 +67,5 @@ export async function loadContent(slug: string): Promise<PageContent> {
     html: htmlContent
   };
 }
+
+export const getContent = cache(loadContent);

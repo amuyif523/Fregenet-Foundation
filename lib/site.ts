@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 export type NavItem = {
   label: string;
@@ -77,3 +78,5 @@ export async function getSiteConfig(): Promise<SiteConfig> {
     trustHighlights
   };
 }
+
+export const getCachedSiteConfig = cache(getSiteConfig);

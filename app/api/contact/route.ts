@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const contactSchema = z.object({
   name: z.string().min(2).max(120),
   organization: z.string().max(160).optional().nullable(),
