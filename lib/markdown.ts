@@ -3,8 +3,9 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import { defaultSchema } from "hast-util-sanitize";
+import type { Schema } from "hast-util-sanitize";
 
-const schema = {
+const schema: Schema = {
   ...defaultSchema,
   attributes: {
     ...defaultSchema.attributes,
