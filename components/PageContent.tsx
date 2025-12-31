@@ -1,4 +1,5 @@
 import CTA from "./CTA";
+import Hero from "./Hero";
 import Section from "./Section";
 import type { PageContent } from "@/lib/content";
 
@@ -8,13 +9,17 @@ type Props = {
 
 export default function PageContent({ content }: Props) {
   return (
-    <Section heading={content.title} kicker={content.kicker}>
-      <article dangerouslySetInnerHTML={{ __html: content.html }} />
-      {content.ctaLabel && content.ctaHref ? (
-        <div className="mt-8">
-          <CTA href={content.ctaHref} label={content.ctaLabel} />
-        </div>
-      ) : null}
-    </Section>
+    <>
+      <Hero
+        kicker={content.kicker}
+        title={content.title}
+        description={content.description}
+        ctaLabel={content.ctaLabel}
+        ctaHref={content.ctaHref}
+      />
+      <Section>
+        <article dangerouslySetInnerHTML={{ __html: content.html }} />
+      </Section>
+    </>
   );
 }
