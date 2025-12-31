@@ -13,13 +13,14 @@ export default function PartnerStrip({ partners }: Props) {
         <a
           key={partner.name}
           href={partner.href || "#"}
-          className="flex flex-col items-center gap-2 text-center text-sm text-ink-muted focus-ring"
+          className="flex flex-col items-center gap-2 text-center text-sm text-ink-muted focus-ring transition duration-150 hover:-translate-y-0.5 hover:shadow"
           aria-label={partner.name}
         >
           <div className="flex h-16 w-full items-center justify-center rounded-lg border border-ink/5 bg-gradient-to-r from-ink/5 to-accent/10">
             <Image src={partner.logo} alt={partner.alt || partner.name} width={160} height={64} className="h-auto w-32 object-contain" />
           </div>
           <span className="text-ink">{partner.name}</span>
+          {partner.descriptor ? <span className="text-xs text-ink-muted">{partner.descriptor}</span> : null}
         </a>
       ))}
     </div>

@@ -3,6 +3,7 @@ import PageContent from "@/components/PageContent";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import PartnerStrip from "@/components/PartnerStrip";
 import ImpactMetrics from "@/components/ImpactMetrics";
+import Reveal from "@/components/Reveal";
 import { getContent } from "@/lib/content";
 import { getCachedSiteConfig } from "@/lib/site";
 import { buildPageMetadata, getSiteUrl } from "@/lib/metadata";
@@ -21,11 +22,19 @@ export default async function HomePage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", url: siteUrl }]} />
-      <PageContent content={content} trustHighlights={site.trustHighlights} heroImage={heroImage} />
-      {content.metrics ? <ImpactMetrics metrics={content.metrics} /> : null}
+      <Reveal>
+        <PageContent content={content} trustHighlights={site.trustHighlights} heroImage={heroImage} />
+      </Reveal>
+      {content.metrics ? (
+        <Reveal delay={100}>
+          <ImpactMetrics metrics={content.metrics} />
+        </Reveal>
+      ) : null}
       <section className="mx-auto max-w-6xl px-6 pb-12">
         <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-accent">Partners & collaborators</h2>
-        <PartnerStrip partners={site.partners} />
+        <Reveal delay={150}>
+          <PartnerStrip partners={site.partners} />
+        </Reveal>
       </section>
     </>
   );

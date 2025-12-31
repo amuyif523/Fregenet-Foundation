@@ -16,6 +16,8 @@ export type SiteConfig = {
   footer: string[];
   trustHighlights: string[];
   partners: Partner[];
+  leaders: Leader[];
+  governanceDocs: GovernanceDoc[];
 };
 
 const siteConfigPath = path.join(process.cwd(), "content", "site.md");
@@ -64,6 +66,7 @@ export type Partner = {
   logo: string;
   alt?: string;
   href?: string;
+  descriptor?: string;
 };
 
 function parsePartners(value: unknown): Partner[] {
@@ -79,7 +82,56 @@ function parsePartners(value: unknown): Partner[] {
     const logo = assertString((item as any).logo, `partners[${index}].logo`);
     const alt = assertString((item as any).alt, `partners[${index}].alt`, false);
     const href = assertString((item as any).href, `partners[${index}].href`, false);
-    return { name: name as string, logo: logo as string, alt, href };
+    const descriptor = assertString((item as any).descriptor, `partners[${index}].descriptor`, false);
+    return { name: name as string, logo: logo as string, alt, href, descriptor };
+  });
+}
+
+export type Leader = {
+  name: string;
+  role: string;
+  bio: string;
+  photo?: string;
+  photoAlt?: string;
+};
+
+function parseLeaders(value: unknown): Leader[] {
+  if (!value) return [];
+  if (!Array.isArray(value)) {
+    throw new Error('Site config field "leaders" must be an array');
+  }
+  return value.map((item, index) => {
+    if (!item || typeof item !== "object") {
+      throw new Error(`Site config leaders entry at index ${index} must be an object`);
+    }
+    const name = assertString((item as any).name, `leaders[${index}].name`);
+    const role = assertString((item as any).role, `leaders[${index}].role`);
+    const bio = assertString((item as any).bio, `leaders[${index}].bio`);
+    const photo = assertString((item as any).photo, `leaders[${index}].photo`, false);
+    const photoAlt = assertString((item as any).photoAlt, `leaders[${index}].photoAlt`, false);
+    return { name: name as string, role: role as string, bio: bio as string, photo: photo || undefined, photoAlt: photoAlt || undefined };
+  });
+}
+
+export type GovernanceDoc = {
+  title: string;
+  href: string;
+  description?: string;
+};
+
+function parseGovernanceDocs(value: unknown): GovernanceDoc[] {
+  if (!value) return [];
+  if (!Array.isArray(value)) {
+    throw new Error('Site config field "governanceDocs" must be an array');
+  }
+  return value.map((item, index) => {
+    if (!item || typeof item !== "object") {
+      throw new Error(`Site config governanceDocs entry at index ${index} must be an object`);
+    }
+    const title = assertString((item as any).title, `governanceDocs[${index}].title`);
+    const href = assertString((item as any).href, `governanceDocs[${index}].href`);
+    const description = assertString((item as any).description, `governanceDocs[${index}].description`, false);
+    return { title: title as string, href: href as string, description: description || undefined };
   });
 }
 
@@ -94,6 +146,8 @@ export async function getSiteConfig(): Promise<SiteConfig> {
   const footer = assertStringArray(data.footer, "footer");
   const trustHighlights = assertStringArray(data.trustHighlights, "trustHighlights");
   const partners = parsePartners(data.partners);
+  const leaders = parseLeaders(data.leaders);
+  const governanceDocs = parseGovernanceDocs(data.governanceDocs);
 
   return {
     siteName,
@@ -102,7 +156,9 @@ export async function getSiteConfig(): Promise<SiteConfig> {
     nav,
     footer,
     trustHighlights,
-    partners
+    partners,
+    leaders,
+    governanceDocs
   };
 }
 
