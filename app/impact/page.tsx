@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageContent from "@/components/PageContent";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import ImpactMetrics from "@/components/ImpactMetrics";
+import Timeline from "@/components/Timeline";
 import { getContent } from "@/lib/content";
 import { getCachedSiteConfig } from "@/lib/site";
 import { buildPageMetadata, getSiteUrl } from "@/lib/metadata";
@@ -20,6 +22,8 @@ export default async function ImpactPage() {
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", url: siteUrl }, { name: content.title, url: `${siteUrl}/impact` }]} />
       <PageContent content={content} heroImage={heroImage} />
+      {content.metrics ? <ImpactMetrics metrics={content.metrics} /> : null}
+      {content.timeline ? <Timeline entries={content.timeline} /> : null}
     </>
   );
 }

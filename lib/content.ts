@@ -31,6 +31,17 @@ export type PageContent = {
     value: string;
     detail?: string;
   }[];
+  pillars?: {
+    title: string;
+    detail: string;
+  }[];
+  timeline?: {
+    year: string;
+    label: string;
+    detail?: string;
+  }[];
+  modelGraphic?: string;
+  modelGraphicAlt?: string;
   keywords?: string[];
 };
 
@@ -69,6 +80,8 @@ export async function loadContent(slug: string): Promise<PageContent> {
   const heroImageAlt = assertString(data.heroImageAlt, "heroImageAlt", false);
   const heroImageCaption = assertString(data.heroImageCaption, "heroImageCaption", false);
   const heroImageCredit = assertString(data.heroImageCredit, "heroImageCredit", false);
+  const modelGraphic = assertString(data.modelGraphic, "modelGraphic", false);
+  const modelGraphicAlt = assertString(data.modelGraphicAlt, "modelGraphicAlt", false);
   const images = Array.isArray(data.images)
     ? data.images
         .map((item: any, index: number) => {
@@ -93,6 +106,31 @@ export async function loadContent(slug: string): Promise<PageContent> {
           const value = assertString(item.value, `metrics[${index}].value`);
           const detail = assertString(item.detail, `metrics[${index}].detail`, false);
           return { label: label as string, value: value as string, detail: detail || undefined };
+        })
+        .filter(Boolean)
+    : undefined;
+  const pillars = Array.isArray(data.pillars)
+    ? data.pillars
+        .map((item: any, index: number) => {
+          if (!item || typeof item !== "object") {
+            throw new Error(`Content frontmatter pillars entry at index ${index} must be an object`);
+          }
+          const title = assertString(item.title, `pillars[${index}].title`);
+          const detail = assertString(item.detail, `pillars[${index}].detail`);
+          return { title: title as string, detail: detail as string };
+        })
+        .filter(Boolean)
+    : undefined;
+  const timeline = Array.isArray(data.timeline)
+    ? data.timeline
+        .map((item: any, index: number) => {
+          if (!item || typeof item !== "object") {
+            throw new Error(`Content frontmatter timeline entry at index ${index} must be an object`);
+          }
+          const year = assertString(item.year, `timeline[${index}].year`);
+          const label = assertString(item.label, `timeline[${index}].label`);
+          const detail = assertString(item.detail, `timeline[${index}].detail`, false);
+          return { year: year as string, label: label as string, detail: detail || undefined };
         })
         .filter(Boolean)
     : undefined;
@@ -128,8 +166,12 @@ export async function loadContent(slug: string): Promise<PageContent> {
     heroImageAlt: heroImageAlt || undefined,
     heroImageCaption: heroImageCaption || undefined,
     heroImageCredit: heroImageCredit || undefined,
+    modelGraphic: modelGraphic || undefined,
+    modelGraphicAlt: modelGraphicAlt || undefined,
     images,
     metrics,
+    pillars,
+    timeline,
     keywords,
     html: htmlContent
   };
