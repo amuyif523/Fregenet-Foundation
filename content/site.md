@@ -1,0 +1,32 @@
+---
+siteName: "Fregenet Foundation"
+tagline: "Whole-child education in Ethiopia with accountable governance."
+contactEmail: "info@fregenetfoundation.org"
+nav:
+  - label: "Home"
+    href: "/"
+  - label: "About"
+    href: "/about"
+  - label: "Model"
+    href: "/model"
+  - label: "Programs"
+    href: "/programs"
+  - label: "Impact"
+    href: "/impact"
+  - label: "Capital Campaign"
+    href: "/capital-campaign"
+  - label: "Governance"
+    href: "/governance"
+  - label: "Get Involved"
+    href: "/get-involved"
+  - label: "Contact"
+    href: "/contact"
+footer:
+  - "Whole-child education for Addis Ababa and Bishoftu students"
+  - "Registered Ethiopian Foreign Charity - US 501(c)(3)"
+trustHighlights:
+  - "Ethiopian Foreign Charity registration"
+  - "US 501(c)(3) recognition"
+  - "President self-funds administrative travel"
+  - "Partners include banks, embassies, and international NGOs"
+---

@@ -3,6 +3,8 @@ title: "Programs"
 description: "Two campuses and sustained alumni support built on the same whole-child model."
 ctaLabel: "See impact priorities"
 ctaHref: "/impact"
+kicker: "Addis Ababa and Bishoftu"
+canonical: "/programs"
 ---
 Each campus is rooted in the same whole-child design while responding to local contexts in Addis Ababa and Bishoftu.
 

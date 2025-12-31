@@ -3,6 +3,8 @@ title: "Whole Child / Obstacle Removal Model"
 description: "Integrated academic, nutrition, health, and family advocacy designed to let students stay present and thrive."
 ctaLabel: "Review the programs"
 ctaHref: "/programs"
+kicker: "Whole Child / Obstacle Removal"
+canonical: "/model"
 ---
 The foundation pairs academic instruction with services that keep students ready to learn. Every element is designed to address predictable barriers so teachers can maintain focus on each child.
 

@@ -3,6 +3,8 @@ title: "Impact"
 description: "Long-term outcomes rooted in steady operations, transparent reporting, and student readiness."
 ctaLabel: "Review governance"
 ctaHref: "/governance"
+kicker: "Steady outcomes since 2004"
+canonical: "/impact"
 ---
 Impact is measured by the stability and readiness of students over time. Since starting with 31 students in 2004, the foundation has built steady programming that keeps learners present and prepared.
 

@@ -3,6 +3,8 @@ title: "Governance"
 description: "Clear oversight, transparent reporting, and leadership choices that keep resources on students."
 ctaLabel: "Request governance materials"
 ctaHref: "/contact"
+kicker: "Transparent oversight"
+canonical: "/governance"
 ---
 Governance is structured to earn trust from public agencies, families, and donors. The foundation operates as an Ethiopian Foreign Charity and is recognized as a US 501(c)(3), ensuring compliance across jurisdictions.
 

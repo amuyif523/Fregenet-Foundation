@@ -4,12 +4,11 @@ import type { PageContent } from "@/lib/content";
 
 type Props = {
   content: PageContent;
-  kicker?: string;
 };
 
-export default function PageContent({ content, kicker }: Props) {
+export default function PageContent({ content }: Props) {
   return (
-    <Section heading={content.title} kicker={kicker}>
+    <Section heading={content.title} kicker={content.kicker}>
       <article dangerouslySetInnerHTML={{ __html: content.html }} />
       {content.ctaLabel && content.ctaHref ? (
         <div className="mt-8">

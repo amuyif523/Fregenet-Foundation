@@ -28,6 +28,7 @@ Visit http://localhost:3000.
 
 ## Environment Variables
 Create `.env.local` from `.env.example`.
+- `SITE_URL` – base URL for canonical/OG metadata (e.g., https://www.fregenetfoundation.org).
 - `CONTACT_WEBHOOK_URL` – optional. If set, contact form submissions POST here; otherwise they are logged server-side.
 
 ## Project Structure (key paths)

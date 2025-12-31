@@ -3,6 +3,8 @@ title: "Get Involved"
 description: "Support the whole-child model, the capital campaign, and the steady delivery of student services."
 ctaLabel: "Start a partnership conversation"
 ctaHref: "/contact"
+kicker: "Collaborate with confidence"
+canonical: "/get-involved"
 ---
 Partnerships keep the foundation steady for students and families. The organization welcomes thoughtful collaboration that aligns with its grounded model.
 
