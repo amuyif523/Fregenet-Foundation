@@ -41,6 +41,11 @@ Create `.env.local` from `.env.example`.
 - Run `npm run build` to verify locally.
 - Deploy to Vercel or another Next-capable host; include `CONTACT_WEBHOOK_URL` if needed.
 
+## Security & Maintenance
+- Track dependency updates monthly; prioritize Next.js, React, TypeScript, and eslint-config-next.
+- Run `npm audit` after upgrades and before releases.
+- Keep the lockfile committed and CI (lint/typecheck/build) green before deploying.
+
 ## Contributing
 - Use feature branches and open PRs.
 - CI runs lint, typecheck, and build on push/PR.
