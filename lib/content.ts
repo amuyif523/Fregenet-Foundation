@@ -12,6 +12,8 @@ export type PageContent = {
   kicker?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryHref?: string;
   canonical?: string;
   navLabel?: string;
   heroImage?: string;
@@ -23,6 +25,11 @@ export type PageContent = {
     alt: string;
     caption?: string;
     credit?: string;
+  }[];
+  metrics?: {
+    label: string;
+    value: string;
+    detail?: string;
   }[];
   keywords?: string[];
 };
@@ -53,6 +60,8 @@ export async function loadContent(slug: string): Promise<PageContent> {
   const description = assertString(data.description, "description");
   const ctaLabel = assertString(data.ctaLabel, "ctaLabel", false);
   const ctaHref = assertString(data.ctaHref, "ctaHref", false);
+  const ctaSecondaryLabel = assertString(data.ctaSecondaryLabel, "ctaSecondaryLabel", false);
+  const ctaSecondaryHref = assertString(data.ctaSecondaryHref, "ctaSecondaryHref", false);
   const kicker = assertString(data.kicker, "kicker", false);
   const canonical = assertString(data.canonical, "canonical", false);
   const navLabel = assertString(data.navLabel, "navLabel", false);
@@ -74,6 +83,19 @@ export async function loadContent(slug: string): Promise<PageContent> {
         })
         .filter(Boolean)
     : undefined;
+  const metrics = Array.isArray(data.metrics)
+    ? data.metrics
+        .map((item: any, index: number) => {
+          if (!item || typeof item !== "object") {
+            throw new Error(`Content frontmatter metrics entry at index ${index} must be an object`);
+          }
+          const label = assertString(item.label, `metrics[${index}].label`);
+          const value = assertString(item.value, `metrics[${index}].value`);
+          const detail = assertString(item.detail, `metrics[${index}].detail`, false);
+          return { label: label as string, value: value as string, detail: detail || undefined };
+        })
+        .filter(Boolean)
+    : undefined;
   const keywords = Array.isArray(data.keywords)
     ? data.keywords.map((k: unknown) => assertString(k, "keywords", true) as string).filter(Boolean)
     : undefined;
@@ -84,6 +106,12 @@ export async function loadContent(slug: string): Promise<PageContent> {
   if (ctaLabel && !ctaHref) {
     throw new Error(`Content frontmatter for "${slug}" has ctaLabel without ctaHref`);
   }
+  if (ctaSecondaryHref && !ctaSecondaryLabel) {
+    throw new Error(`Content frontmatter for "${slug}" has ctaSecondaryHref without ctaSecondaryLabel`);
+  }
+  if (ctaSecondaryLabel && !ctaSecondaryHref) {
+    throw new Error(`Content frontmatter for "${slug}" has ctaSecondaryLabel without ctaSecondaryHref`);
+  }
 
   return {
     slug,
@@ -92,6 +120,8 @@ export async function loadContent(slug: string): Promise<PageContent> {
     kicker,
     ctaLabel: ctaLabel || undefined,
     ctaHref: ctaHref || undefined,
+    ctaSecondaryLabel: ctaSecondaryLabel || undefined,
+    ctaSecondaryHref: ctaSecondaryHref || undefined,
     canonical: canonical || undefined,
     navLabel: navLabel || undefined,
     heroImage: heroImage || undefined,
@@ -99,6 +129,7 @@ export async function loadContent(slug: string): Promise<PageContent> {
     heroImageCaption: heroImageCaption || undefined,
     heroImageCredit: heroImageCredit || undefined,
     images,
+    metrics,
     keywords,
     html: htmlContent
   };
