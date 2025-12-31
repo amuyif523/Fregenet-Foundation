@@ -10,6 +10,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const content = await loadContent("home");
-  return <PageContent content={content} />;
+  const [content, site] = await Promise.all([loadContent("home"), getSiteConfig()]);
+  return <PageContent content={content} trustHighlights={site.trustHighlights} />;
 }

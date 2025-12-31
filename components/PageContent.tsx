@@ -1,13 +1,15 @@
 import CTA from "./CTA";
 import Hero from "./Hero";
 import Section from "./Section";
+import TrustPanel from "./TrustPanel";
 import type { PageContent } from "@/lib/content";
 
 type Props = {
   content: PageContent;
+  trustHighlights?: string[];
 };
 
-export default function PageContent({ content }: Props) {
+export default function PageContent({ content, trustHighlights }: Props) {
   return (
     <>
       <Hero
@@ -19,6 +21,7 @@ export default function PageContent({ content }: Props) {
       />
       <Section>
         <article dangerouslySetInnerHTML={{ __html: content.html }} />
+        {trustHighlights ? <TrustPanel highlights={trustHighlights} /> : null}
       </Section>
     </>
   );

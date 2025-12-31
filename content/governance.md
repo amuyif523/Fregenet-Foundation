@@ -12,6 +12,7 @@ Governance is structured to earn trust from public agencies, families, and donor
 - President self-funds administrative travel so program funds stay directed to students
 - Board and leadership maintain policies that prioritize predictable delivery of nutrition, healthcare access, and instruction
 - Financial reporting is shared transparently with institutional partners
+- Governance practices are reviewed with partners to maintain accountability across Addis Ababa and Bishoftu
 
 ## External confidence
 - Registrations and compliance records are kept current for embassy, foundation, and bank reviews

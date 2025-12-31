@@ -30,3 +30,4 @@ Fregenet Foundation is a long-standing Ethiopian education nonprofit founded in 
 - Registered Ethiopian Foreign Charity and US 501(c)(3)
 - Transparent financial reporting for institutional partners
 - Active collaborations with banks, embassies, and international NGOs
+- Governance practices documented and reviewed annually

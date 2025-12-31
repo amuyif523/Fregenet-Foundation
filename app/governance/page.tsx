@@ -10,6 +10,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function GovernancePage() {
-  const content = await loadContent("governance");
-  return <PageContent content={content} />;
+  const [content, site] = await Promise.all([loadContent("governance"), getSiteConfig()]);
+  return <PageContent content={content} trustHighlights={site.trustHighlights} />;
 }

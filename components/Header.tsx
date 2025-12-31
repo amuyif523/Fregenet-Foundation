@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { SiteConfig } from "@/lib/site";
 
@@ -10,7 +10,23 @@ type Props = {
 
 export default function Header({ site }: Props) {
   const [open, setOpen] = useState(false);
+  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const ctaLabel = site.nav.find((n) => n.href === "/get-involved")?.label ?? "Get Involved";
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    }
+    if (open) {
+      document.addEventListener("keydown", onKeyDown);
+      if (firstLinkRef.current) {
+        firstLinkRef.current.focus();
+      }
+    }
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <header className="border-b border-ink/5 bg-white/90 backdrop-blur">
@@ -47,11 +63,12 @@ export default function Header({ site }: Props) {
       {open ? (
         <div id="mobile-menu" className="border-t border-ink/5 bg-white px-6 py-4 md:hidden">
           <div className="flex flex-col gap-3 text-sm font-semibold text-ink">
-            {site.nav.map((item) => (
+            {site.nav.map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="rounded-lg px-2 py-2 hover:bg-ink/5 focus-ring"
+                ref={index === 0 ? firstLinkRef : undefined}
                 onClick={() => setOpen(false)}
               >
                 {item.label}

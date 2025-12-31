@@ -1,0 +1,15 @@
+{
+  "name": "Fregenet Foundation",
+  "short_name": "Fregenet",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f3ea",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "64x64"
+    }
+  ]
+}
