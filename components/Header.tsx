@@ -15,19 +15,12 @@ export default function Header({ site }: Props) {
   return (
     <header className="border-b border-ink/5 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="text-lg font-semibold tracking-tight text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
+        <Link href="/" className="text-lg font-semibold tracking-tight text-ink focus-ring">
           {site.siteName}
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-semibold text-ink-muted md:flex">
           {site.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
+            <Link key={item.href} href={item.href} className="hover:text-ink focus-ring">
               {item.label}
             </Link>
           ))}
@@ -35,16 +28,17 @@ export default function Header({ site }: Props) {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-ink/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
+            className="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-ink/90 focus-ring md:hidden"
             onClick={() => setOpen((prev) => !prev)}
             aria-expanded={open}
             aria-controls="mobile-menu"
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           >
             Menu
           </button>
           <Link
             href="/get-involved"
-            className="hidden rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-ink/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:inline-flex"
+            className="hidden rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-ink/90 focus-ring md:inline-flex"
           >
             {ctaLabel}
           </Link>
@@ -57,7 +51,7 @@ export default function Header({ site }: Props) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-lg px-2 py-2 hover:bg-ink/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="rounded-lg px-2 py-2 hover:bg-ink/5 focus-ring"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -65,7 +59,7 @@ export default function Header({ site }: Props) {
             ))}
             <Link
               href="/get-involved"
-              className="rounded-full bg-ink px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-ink/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="rounded-full bg-ink px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-ink/90 focus-ring"
               onClick={() => setOpen(false)}
             >
               {ctaLabel}

@@ -19,6 +19,10 @@ a:hover {
   @apply decoration-accent/60;
 }
 
+.focus-ring {
+  @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
 .prose {
   @apply text-lg leading-relaxed text-ink;
 }

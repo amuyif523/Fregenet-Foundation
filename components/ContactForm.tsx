@@ -46,7 +46,7 @@ export default function ContactForm() {
 
   return (
     <div className="card mt-10 p-8">
-      <form id="contact-form" className="space-y-6" onSubmit={handleSubmit}>
+      <form id="contact-form" className="space-y-6" onSubmit={handleSubmit} aria-live="polite">
         <div className="grid gap-6 md:grid-cols-2">
           <label className="block text-sm font-medium text-ink">
             Name
@@ -74,6 +74,7 @@ export default function ContactForm() {
               type="email"
               required
               className="mt-2 w-full rounded-lg border border-ink/10 bg-white px-3 py-2 text-ink shadow-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+              aria-describedby="contact-hint"
             />
           </label>
           <label className="block text-sm font-medium text-ink">
@@ -94,6 +95,9 @@ export default function ContactForm() {
             className="mt-2 w-full rounded-lg border border-ink/10 bg-white px-3 py-2 text-ink shadow-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
           />
         </label>
+        <p id="contact-hint" className="text-xs text-ink-muted">
+          We reply within 3 business days.
+        </p>
         <div className="flex items-center gap-4">
           <button
             type="submit"
@@ -102,7 +106,11 @@ export default function ContactForm() {
           >
             {status === "submitting" ? "Sending..." : "Submit inquiry"}
           </button>
-          {status === "sent" ? <span className="text-sm text-ink">Submitted.</span> : null}
+          <span className="sr-only" aria-live="assertive">
+            {status === "sent" ? "Submitted. We will reply within 3 business days." : null}
+            {status === "error" && error ? `Error: ${error}` : null}
+          </span>
+          {status === "sent" ? <span className="text-sm text-ink">Received. We will reply within 3 business days.</span> : null}
           {status === "error" && error ? <span className="text-sm text-red-700">{error}</span> : null}
         </div>
       </form>
