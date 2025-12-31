@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import PageContent from "@/components/PageContent";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { getContent } from "@/lib/content";
 import { getCachedSiteConfig } from "@/lib/site";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata, getSiteUrl } from "@/lib/metadata";
 
 export const revalidate = 3600;
 
@@ -13,5 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ProgramsPage() {
   const content = await getContent("programs");
-  return <PageContent content={content} />;
+  const siteUrl = getSiteUrl();
+  const heroImage = { src: "/hero-pattern.svg", alt: "Abstract pattern referencing Ethiopian textiles" };
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: "Home", url: siteUrl }, { name: content.title, url: `${siteUrl}/programs` }]} />
+      <PageContent content={content} heroImage={heroImage} />
+    </>
+  );
 }

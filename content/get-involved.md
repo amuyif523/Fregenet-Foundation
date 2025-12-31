@@ -5,6 +5,10 @@ ctaLabel: "Start a partnership conversation"
 ctaHref: "/contact"
 kicker: "Collaborate with confidence"
 canonical: "/get-involved"
+keywords:
+  - "Support Ethiopian education"
+  - "Fund nutrition and healthcare access"
+  - "Partner with Fregenet Foundation"
 ---
 Partnerships keep the foundation steady for students and families. The organization welcomes thoughtful collaboration that aligns with its grounded model.
 

@@ -14,6 +14,7 @@ export type PageContent = {
   ctaHref?: string;
   canonical?: string;
   navLabel?: string;
+  keywords?: string[];
 };
 
 const contentDir = path.join(process.cwd(), "content");
@@ -45,6 +46,9 @@ export async function loadContent(slug: string): Promise<PageContent> {
   const kicker = assertString(data.kicker, "kicker", false);
   const canonical = assertString(data.canonical, "canonical", false);
   const navLabel = assertString(data.navLabel, "navLabel", false);
+  const keywords = Array.isArray(data.keywords)
+    ? data.keywords.map((k: unknown) => assertString(k, "keywords", true) as string).filter(Boolean)
+    : undefined;
 
   if (ctaHref && !ctaLabel) {
     throw new Error(`Content frontmatter for "${slug}" has ctaHref without ctaLabel`);
@@ -62,6 +66,7 @@ export async function loadContent(slug: string): Promise<PageContent> {
     ctaHref: ctaHref || undefined,
     canonical: canonical || undefined,
     navLabel: navLabel || undefined,
+    keywords,
     html: htmlContent
   };
 }

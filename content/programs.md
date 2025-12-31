@@ -5,6 +5,10 @@ ctaLabel: "See impact priorities"
 ctaHref: "/impact"
 kicker: "Addis Ababa and Bishoftu"
 canonical: "/programs"
+keywords:
+  - "Addis Ababa education program"
+  - "Bishoftu elementary school"
+  - "Alumni support Ethiopia"
 ---
 Each campus is rooted in the same whole-child design while responding to local contexts in Addis Ababa and Bishoftu.
 

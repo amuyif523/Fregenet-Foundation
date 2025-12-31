@@ -5,6 +5,10 @@ ctaLabel: "Review the programs"
 ctaHref: "/programs"
 kicker: "Whole Child / Obstacle Removal"
 canonical: "/model"
+keywords:
+  - "Whole child education"
+  - "Obstacle removal model"
+  - "Student readiness Ethiopia"
 ---
 The foundation pairs academic instruction with services that keep students ready to learn. Every element is designed to address predictable barriers so teachers can maintain focus on each child.
 

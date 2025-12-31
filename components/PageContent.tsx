@@ -7,9 +7,13 @@ import type { PageContent } from "@/lib/content";
 type Props = {
   content: PageContent;
   trustHighlights?: string[];
+  heroImage?: {
+    src: string;
+    alt: string;
+  };
 };
 
-export default function PageContent({ content, trustHighlights }: Props) {
+export default function PageContent({ content, trustHighlights, heroImage }: Props) {
   return (
     <>
       <Hero
@@ -18,6 +22,8 @@ export default function PageContent({ content, trustHighlights }: Props) {
         description={content.description}
         ctaLabel={content.ctaLabel}
         ctaHref={content.ctaHref}
+        imageSrc={heroImage?.src}
+        imageAlt={heroImage?.alt}
       />
       <Section>
         <article dangerouslySetInnerHTML={{ __html: content.html }} />

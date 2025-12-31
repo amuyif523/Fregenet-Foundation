@@ -16,10 +16,13 @@ export function buildPageMetadata(content: PageContent, site: SiteConfig): Metad
     content.canonical || (content.slug === "home" ? "/" : `/${content.slug.replace(/^\//, "")}`);
   const canonicalUrl = new URL(canonicalPath, siteUrl);
   const title = `${content.title} | ${site.siteName}`;
+  const ogImage = new URL("/og-default.svg", siteUrl).toString();
+  const keywords = content.keywords?.length ? content.keywords : undefined;
 
   return {
     title,
     description: content.description,
+    keywords,
     alternates: {
       canonical: canonicalUrl.toString()
     },
@@ -29,12 +32,14 @@ export function buildPageMetadata(content: PageContent, site: SiteConfig): Metad
       url: canonicalUrl.toString(),
       siteName: site.siteName,
       type: "website",
-      locale: "en_US"
+      locale: "en_US",
+      images: [ogImage]
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: content.description
+      description: content.description,
+      images: [ogImage]
     }
   };
 }

@@ -5,6 +5,10 @@ ctaLabel: "Explore the model"
 ctaHref: "/model"
 kicker: "Founded by Tafesse Woubshet and Melesech Gebbre"
 canonical: "/about"
+keywords:
+  - "Fregenet Leeza Tafesse Woubshet legacy"
+  - "Ethiopian education foundation"
+  - "Founded 2004 Addis Ababa"
 ---
 The foundation was created in 2004 by Tafesse Woubshet and Melesech Gebbre to honor the life and promise of Fregenet Leeza Tafesse Woubshet. It began with 31 students and a commitment to remove every obstacle that kept children from learning.
 
