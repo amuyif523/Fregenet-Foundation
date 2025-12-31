@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageContent from "@/components/PageContent";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import PartnerStrip from "@/components/PartnerStrip";
 import { getContent } from "@/lib/content";
 import { getCachedSiteConfig } from "@/lib/site";
 import { buildPageMetadata, getSiteUrl } from "@/lib/metadata";
@@ -20,6 +21,10 @@ export default async function HomePage() {
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", url: siteUrl }]} />
       <PageContent content={content} trustHighlights={site.trustHighlights} heroImage={heroImage} />
+      <section className="mx-auto max-w-6xl px-6 pb-12">
+        <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-accent">Partners & collaborators</h2>
+        <PartnerStrip partners={site.partners} />
+      </section>
     </>
   );
 }

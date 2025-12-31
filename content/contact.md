@@ -9,6 +9,15 @@ keywords:
   - "Contact Fregenet Foundation"
   - "Request governance materials"
   - "Capital campaign inquiry"
+heroImage: "/placeholders/photo.svg"
+heroImageAlt: "Staff member responding to inquiries"
+heroImageCaption: "Placeholder image — replace with team communications photo."
+heroImageCredit: "Photography to be provided"
+images:
+  - src: "/placeholders/photo.svg"
+    alt: "Staff preparing correspondence"
+    caption: "Placeholder image — swap with contact/operations photo."
+    credit: "To be provided"
 ---
 The foundation welcomes conversations with donors, public agencies, and partners who align with the whole-child model. Use the inquiry form to request documentation, discuss the capital campaign, or coordinate program support.
 

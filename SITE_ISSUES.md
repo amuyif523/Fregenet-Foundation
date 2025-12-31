@@ -90,3 +90,40 @@
    - Add CONTRIBUTING.md with branch/PR/testing guidance.
    - Document monitoring setup using `/api/health` (e.g., UptimeRobot/StatusCake) and logging.
    - Note deploy rollback/roll-forward steps and image optimization guidance (Next Image for new assets).
+
+## New Sprints to Achieve Embassy/Donor-Ready Polish
+
+15) **Imagery & Narrative**
+   - Add hero and section imagery placeholders (use `next/image` with descriptive `alt`): hero, model, programs (Addis/Bishoftu), impact, leadership/board.
+   - Add captions and credit fields in Markdown frontmatter for each placeholder.
+   - Prepare slots for partner/logo strip with alt text and optional link targets.
+
+16) **Hero & Trust Overhaul**
+   - Redesign homepage hero: full-width image placeholder, concise mission line, primary/secondary CTAs.
+   - Add a compact trust strip with registrations and partner logos (placeholder images + alt + links).
+   - Add an impact metrics band (years operating, campuses, students served, alumni supported) with concise labels.
+
+17) **Impact & Model Visualization**
+   - Add a “Model at a Glance” graphic placeholder (Next Image) and structured list of pillars.
+   - Build an impact strip with 3–4 stat cards (numbers + context) fed from Markdown/frontmatter.
+   - Include a timeline placeholder (start year to present) for growth milestones.
+
+18) **Governance & Leadership Presence**
+   - Add leadership/board profiles (name, role, bio, optional photo placeholder) via Markdown data.
+   - Add governance downloads section (placeholder links for PDFs: registration, 501(c)(3), latest report).
+   - Surface partner/endorsement logos with alt text and brief descriptors.
+
+19) **Layout & Motion Polish**
+   - Introduce alternating section backgrounds and two-column story blocks for long-form pages.
+   - Add subtle scroll-reveal/stagger animations on hero/impact/partner sections (reduced motion respected).
+   - Enhance hover/focus states for cards/CTAs to feel intentional but calm.
+
+20) **Accessibility & QA Pass**
+   - Re-run contrast checks after visual updates; ensure motion respects `prefers-reduced-motion`.
+   - Validate focus order with added imagery/sections; ensure new components have proper ARIA/alt text.
+   - Add smoke tests for sanitized rendering to ensure new content blocks remain safe.
+
+21) **Deployment & Content Hooks**
+   - Provide guidance for swapping placeholders with production assets (recommended dimensions/formats).
+   - Add example content entries for logos/photos with alt/caption fields.
+   - Document a publish checklist (update content, run lint/typecheck/test/build, deploy, verify).

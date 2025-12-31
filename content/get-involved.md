@@ -9,6 +9,15 @@ keywords:
   - "Support Ethiopian education"
   - "Fund nutrition and healthcare access"
   - "Partner with Fregenet Foundation"
+heroImage: "/placeholders/photo.svg"
+heroImageAlt: "Supporters meeting with staff"
+heroImageCaption: "Placeholder image — replace with partner meeting photo."
+heroImageCredit: "Photography to be provided"
+images:
+  - src: "/placeholders/photo.svg"
+    alt: "Partners reviewing program materials"
+    caption: "Placeholder image — swap with partner engagement photo."
+    credit: "To be provided"
 ---
 Partnerships keep the foundation steady for students and families. The organization welcomes thoughtful collaboration that aligns with its grounded model.
 

@@ -9,6 +9,15 @@ keywords:
   - "Education impact Ethiopia"
   - "Student readiness outcomes"
   - "Transparent nonprofit reporting"
+heroImage: "/placeholders/photo.svg"
+heroImageAlt: "Students studying with teacher guidance"
+heroImageCaption: "Placeholder image — replace with impact-focused student photo."
+heroImageCredit: "Photography to be provided"
+images:
+  - src: "/placeholders/photo.svg"
+    alt: "Students celebrating milestones"
+    caption: "Placeholder image — swap with impact milestone photo."
+    credit: "To be provided"
 ---
 Impact is measured by the stability and readiness of students over time. Since starting with 31 students in 2004, the foundation has built steady programming that keeps learners present and prepared.
 

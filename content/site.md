@@ -29,4 +29,17 @@ trustHighlights:
   - "US 501(c)(3) recognition"
   - "President self-funds administrative travel"
   - "Partners include banks, embassies, and international NGOs"
+partners:
+  - name: "Partner One"
+    logo: "/partners/partner-1.svg"
+    alt: "Partner One placeholder logo"
+    href: "#"
+  - name: "Partner Two"
+    logo: "/partners/partner-2.svg"
+    alt: "Partner Two placeholder logo"
+    href: "#"
+  - name: "Partner Three"
+    logo: "/partners/partner-3.svg"
+    alt: "Partner Three placeholder logo"
+    href: "#"
 ---

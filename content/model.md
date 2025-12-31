@@ -9,6 +9,15 @@ keywords:
   - "Whole child education"
   - "Obstacle removal model"
   - "Student readiness Ethiopia"
+heroImage: "/placeholders/photo.svg"
+heroImageAlt: "Teacher supporting students during a lesson"
+heroImageCaption: "Placeholder image — replace with classroom support photo."
+heroImageCredit: "Photography to be provided"
+images:
+  - src: "/placeholders/photo.svg"
+    alt: "Nutrition and healthcare support representation"
+    caption: "Placeholder image — swap with nutrition/health support photo."
+    credit: "To be provided"
 ---
 The foundation pairs academic instruction with services that keep students ready to learn. Every element is designed to address predictable barriers so teachers can maintain focus on each child.
 

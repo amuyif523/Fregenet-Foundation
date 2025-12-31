@@ -14,6 +14,16 @@ export type PageContent = {
   ctaHref?: string;
   canonical?: string;
   navLabel?: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+  heroImageCaption?: string;
+  heroImageCredit?: string;
+  images?: {
+    src: string;
+    alt: string;
+    caption?: string;
+    credit?: string;
+  }[];
   keywords?: string[];
 };
 
@@ -46,6 +56,24 @@ export async function loadContent(slug: string): Promise<PageContent> {
   const kicker = assertString(data.kicker, "kicker", false);
   const canonical = assertString(data.canonical, "canonical", false);
   const navLabel = assertString(data.navLabel, "navLabel", false);
+  const heroImage = assertString(data.heroImage, "heroImage", false);
+  const heroImageAlt = assertString(data.heroImageAlt, "heroImageAlt", false);
+  const heroImageCaption = assertString(data.heroImageCaption, "heroImageCaption", false);
+  const heroImageCredit = assertString(data.heroImageCredit, "heroImageCredit", false);
+  const images = Array.isArray(data.images)
+    ? data.images
+        .map((item: any, index: number) => {
+          if (!item || typeof item !== "object") {
+            throw new Error(`Content frontmatter images entry at index ${index} must be an object`);
+          }
+          const src = assertString(item.src, `images[${index}].src`);
+          const alt = assertString(item.alt, `images[${index}].alt`);
+          const caption = assertString(item.caption, `images[${index}].caption`, false);
+          const credit = assertString(item.credit, `images[${index}].credit`, false);
+          return { src: src as string, alt: alt as string, caption: caption || undefined, credit: credit || undefined };
+        })
+        .filter(Boolean)
+    : undefined;
   const keywords = Array.isArray(data.keywords)
     ? data.keywords.map((k: unknown) => assertString(k, "keywords", true) as string).filter(Boolean)
     : undefined;
@@ -66,6 +94,11 @@ export async function loadContent(slug: string): Promise<PageContent> {
     ctaHref: ctaHref || undefined,
     canonical: canonical || undefined,
     navLabel: navLabel || undefined,
+    heroImage: heroImage || undefined,
+    heroImageAlt: heroImageAlt || undefined,
+    heroImageCaption: heroImageCaption || undefined,
+    heroImageCredit: heroImageCredit || undefined,
+    images,
     keywords,
     html: htmlContent
   };

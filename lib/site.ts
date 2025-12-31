@@ -15,6 +15,7 @@ export type SiteConfig = {
   nav: NavItem[];
   footer: string[];
   trustHighlights: string[];
+  partners: Partner[];
 };
 
 const siteConfigPath = path.join(process.cwd(), "content", "site.md");
@@ -58,6 +59,30 @@ function parseNav(value: unknown): NavItem[] {
   });
 }
 
+export type Partner = {
+  name: string;
+  logo: string;
+  alt?: string;
+  href?: string;
+};
+
+function parsePartners(value: unknown): Partner[] {
+  if (!value) return [];
+  if (!Array.isArray(value)) {
+    throw new Error('Site config field "partners" must be an array');
+  }
+  return value.map((item, index) => {
+    if (!item || typeof item !== "object") {
+      throw new Error(`Site config partners entry at index ${index} must be an object`);
+    }
+    const name = assertString((item as any).name, `partners[${index}].name`);
+    const logo = assertString((item as any).logo, `partners[${index}].logo`);
+    const alt = assertString((item as any).alt, `partners[${index}].alt`, false);
+    const href = assertString((item as any).href, `partners[${index}].href`, false);
+    return { name: name as string, logo: logo as string, alt, href };
+  });
+}
+
 export async function getSiteConfig(): Promise<SiteConfig> {
   const file = await fs.readFile(siteConfigPath, "utf-8");
   const { data } = matter(file);
@@ -68,6 +93,7 @@ export async function getSiteConfig(): Promise<SiteConfig> {
   const nav = parseNav(data.nav);
   const footer = assertStringArray(data.footer, "footer");
   const trustHighlights = assertStringArray(data.trustHighlights, "trustHighlights");
+  const partners = parsePartners(data.partners);
 
   return {
     siteName,
@@ -75,7 +101,8 @@ export async function getSiteConfig(): Promise<SiteConfig> {
     contactEmail,
     nav,
     footer,
-    trustHighlights
+    trustHighlights,
+    partners
   };
 }
 

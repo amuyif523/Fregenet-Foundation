@@ -9,6 +9,15 @@ keywords:
   - "Fregenet Foundation"
   - "Ethiopia education nonprofit"
   - "Whole child model"
+heroImage: "/placeholders/photo.svg"
+heroImageAlt: "Students gathered at an Ethiopian school courtyard"
+heroImageCaption: "Placeholder image — replace with Fregenet students on campus."
+heroImageCredit: "Photography to be provided"
+images:
+  - src: "/placeholders/photo.svg"
+    alt: "Classroom scene representing the whole-child model"
+    caption: "Placeholder image — swap with classroom photo from Addis Ababa or Bishoftu."
+    credit: "To be provided"
 ---
 Fregenet Foundation is a long-standing Ethiopian education nonprofit founded in 2004 to honor the legacy of Fregenet Leeza Tafesse Woubshet. The foundation serves children in Addis Ababa and Bishoftu through a grounded, whole-child model that removes barriers to learning and builds lasting trust with families and partners.
 
