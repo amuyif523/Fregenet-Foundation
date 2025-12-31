@@ -7,11 +7,13 @@ type Status = "idle" | "submitting" | "sent" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
     setError(null);
+    setInfo(null);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -40,6 +42,7 @@ export default function ContactForm() {
       setStatus("sent");
       form.reset();
       if (body?.message) {
+        setInfo(body.message);
         setError(null);
       }
     } catch (err) {
@@ -114,8 +117,16 @@ export default function ContactForm() {
             {status === "sent" ? "Submitted. We will reply within 3 business days." : null}
             {status === "error" && error ? `Error: ${error}` : null}
           </span>
-          {status === "sent" ? <span className="text-sm text-ink">Received. We will reply within 3 business days.</span> : null}
-          {status === "error" && error ? <span className="text-sm text-red-700">{error}</span> : null}
+          {status === "sent" ? (
+            <span className="text-sm text-ink" role="status" aria-live="polite">
+              {info || "Received. We will reply within 3 business days."}
+            </span>
+          ) : null}
+          {status === "error" && error ? (
+            <span className="text-sm text-red-700" role="status" aria-live="assertive">
+              {error}
+            </span>
+          ) : null}
         </div>
       </form>
     </div>

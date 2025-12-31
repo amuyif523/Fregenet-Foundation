@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { SiteConfig } from "@/lib/site";
 
@@ -10,7 +10,7 @@ type Props = {
 
 export default function Header({ site }: Props) {
   const [open, setOpen] = useState(false);
-  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const ctaLabel = site.nav.find((n) => n.href === "/get-involved")?.label ?? "Get Involved";
 
   useEffect(() => {
@@ -21,11 +21,36 @@ export default function Header({ site }: Props) {
     }
     if (open) {
       document.addEventListener("keydown", onKeyDown);
-      if (firstLinkRef.current) {
-        firstLinkRef.current.focus();
-      }
     }
     return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const container = menuRef.current;
+    if (!container) return;
+    const focusable = container.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    first?.focus();
+
+    function handleTab(event: KeyboardEvent) {
+      if (event.key !== "Tab" || focusable.length === 0) return;
+      if (event.shiftKey) {
+        if (document.activeElement === first) {
+          event.preventDefault();
+          (last || first).focus();
+        }
+      } else if (document.activeElement === last) {
+        event.preventDefault();
+        (first || last).focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleTab);
+    return () => document.removeEventListener("keydown", handleTab);
   }, [open]);
 
   return (
@@ -34,7 +59,7 @@ export default function Header({ site }: Props) {
         <Link href="/" className="text-lg font-semibold tracking-tight text-ink focus-ring">
           {site.siteName}
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-semibold text-ink-muted md:flex">
+        <nav id="site-nav" aria-label="Primary" className="hidden items-center gap-6 text-sm font-semibold text-ink-muted md:flex">
           {site.nav.map((item) => (
             <Link key={item.href} href={item.href} className="hover:text-ink focus-ring">
               {item.label}
@@ -61,14 +86,13 @@ export default function Header({ site }: Props) {
         </div>
       </div>
       {open ? (
-        <div id="mobile-menu" className="border-t border-ink/5 bg-white px-6 py-4 md:hidden">
+        <div id="mobile-menu" ref={menuRef} className="border-t border-ink/5 bg-white px-6 py-4 md:hidden">
           <div className="flex flex-col gap-3 text-sm font-semibold text-ink">
-            {site.nav.map((item, index) => (
+            {site.nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="rounded-lg px-2 py-2 hover:bg-ink/5 focus-ring"
-                ref={index === 0 ? firstLinkRef : undefined}
                 onClick={() => setOpen(false)}
               >
                 {item.label}

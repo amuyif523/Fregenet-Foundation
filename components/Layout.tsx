@@ -18,6 +18,12 @@ export default function Layout({ children, site }: LayoutProps) {
       >
         Skip to main content
       </a>
+      <a
+        href="#site-nav"
+        className="absolute left-3 top-14 z-50 -translate-y-16 rounded-md bg-ink px-3 py-2 text-sm font-semibold text-white shadow focus-visible:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Skip to navigation
+      </a>
       <Header site={site} />
       <main id="main-content" className="flex-1">
         {children}
