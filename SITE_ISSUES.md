@@ -61,3 +61,32 @@
    - Add HTTP caching hints, image optimization pipeline, and font loading strategy.
    - Document deploy pipeline (e.g., Vercel) with environment setup and secrets management.
    - Add lightweight monitoring/uptime hooks and a roll-forward/rollback note.
+
+## Remaining Sprints to Close Gaps
+
+9) **Accessibility Audit & Fixes**
+   - Run keyboard-only and screen reader checks; verify contrast.
+   - Add focus trap for mobile menu, skip-to-menu link, and visible focus on all controls.
+   - Improve ARIA on nav/hero/form (aria-live, labels); add descriptive success/error messaging.
+
+10) **Content Security & Sanitization**
+   - Sanitize Markdown HTML output (rehype-sanitize) before `dangerouslySetInnerHTML`.
+   - Add tests to ensure disallowed tags/scripts are stripped.
+
+11) **Navigation UX Enhancements**
+   - Add active nav state and breadcrumbs.
+   - Ensure mobile menu closes on route change/Escape and traps focus until dismissed.
+
+12) **SEO & Imagery**
+   - Introduce imagery with alt text and metadata.
+   - Add per-page keywords (if desired) and ensure image metadata is set; keep JSON-LD/sitemap/robots current; add breadcrumb structured data if feasible.
+
+13) **Design & Cultural Polish**
+   - Refine spacing/section hierarchy and typography balance.
+   - Add subtle Ethiopian-inspired accents/patterns without overwhelming minimalism.
+   - Introduce trust/impact callouts with restrained visuals.
+
+14) **DevOps & Contribution**
+   - Add CONTRIBUTING.md with branch/PR/testing guidance.
+   - Document monitoring setup using `/api/health` (e.g., UptimeRobot/StatusCake) and logging.
+   - Note deploy rollback/roll-forward steps and image optimization guidance (Next Image for new assets).
