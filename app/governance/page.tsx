@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageContent from "@/components/PageContent";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import LeadershipGrid from "@/components/LeadershipGrid";
+import GovernanceDocs from "@/components/GovernanceDocs";
 import { getContent } from "@/lib/content";
 import { getCachedSiteConfig } from "@/lib/site";
 import { buildPageMetadata, getSiteUrl } from "@/lib/metadata";
@@ -20,6 +22,8 @@ export default async function GovernancePage() {
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", url: siteUrl }, { name: content.title, url: `${siteUrl}/governance` }]} />
       <PageContent content={content} trustHighlights={site.trustHighlights} heroImage={heroImage} />
+      <LeadershipGrid leaders={site.leaders} />
+      <GovernanceDocs docs={site.governanceDocs} />
     </>
   );
 }

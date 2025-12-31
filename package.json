@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "test": "tsx tests/sanitize.test.ts"
+    "test": "tsx tests/sanitize.test.ts && tsx tests/reveal.test.ts"
   },
   "dependencies": {
     "autoprefixer": "10.4.17",

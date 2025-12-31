@@ -52,6 +52,7 @@ export default function Hero({
               height={800}
               className="relative h-auto w-full rounded-2xl border border-ink/10 bg-white/80 object-cover shadow-lg"
               priority={!compact}
+              aria-hidden={!imageAlt}
             />
           </div>
         ) : null}
