@@ -50,10 +50,6 @@ timeline:
   - year: "Today"
     label: "Alumni support"
     detail: "Guidance through university to sustain momentum."
-heroImage: "/placeholders/photo.svg"
-heroImageAlt: "Teacher supporting students during a lesson"
-heroImageCaption: "Placeholder image — replace with classroom support photo."
-heroImageCredit: "Photography to be provided"
 images:
   - src: "/placeholders/photo.svg"
     alt: "Nutrition and healthcare support representation"
