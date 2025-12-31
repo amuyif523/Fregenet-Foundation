@@ -47,19 +47,19 @@ a:hover {
 }
 
 .prose h1 {
-  @apply text-4xl md:text-5xl mb-6;
+  @apply text-4xl md:text-5xl mb-6 tracking-tight;
 }
 
 .prose h2 {
-  @apply text-2xl md:text-3xl mt-10 mb-4;
+  @apply text-2xl md:text-3xl mt-10 mb-4 tracking-tight;
 }
 
 .prose h3 {
-  @apply text-xl md:text-2xl mt-8 mb-3;
+  @apply text-xl md:text-2xl mt-8 mb-3 tracking-tight;
 }
 
 .prose p {
-  @apply mb-6 text-ink-muted;
+  @apply mb-6 text-ink-muted leading-relaxed;
 }
 
 .prose ul {
@@ -75,9 +75,9 @@ a:hover {
 }
 
 .prose blockquote {
-  @apply border-l-4 border-accent/60 pl-4 italic text-ink;
+  @apply border-l-4 border-accent/60 pl-4 italic text-ink bg-white/60 py-3 px-4 rounded-r-lg;
 }
 
 .card {
-  @apply bg-white/90 shadow-sm backdrop-blur rounded-xl border border-ink/5;
+  @apply bg-white/90 shadow-md backdrop-blur rounded-xl border border-ink/5;
 }
