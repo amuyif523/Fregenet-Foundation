@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import TrustStrip from "./TrustStrip";
+import Breadcrumbs from "./Breadcrumbs";
 import type { SiteConfig } from "@/lib/site";
 
 type LayoutProps = {
@@ -25,6 +26,7 @@ export default function Layout({ children, site }: LayoutProps) {
         Skip to navigation
       </a>
       <Header site={site} />
+      <Breadcrumbs />
       <main id="main-content" className="flex-1">
         {children}
       </main>

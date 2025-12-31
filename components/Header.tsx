@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { SiteConfig } from "@/lib/site";
+import { usePathname } from "next/navigation";
 
 type Props = {
   site: SiteConfig;
@@ -12,6 +13,8 @@ export default function Header({ site }: Props) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const ctaLabel = site.nav.find((n) => n.href === "/get-involved")?.label ?? "Get Involved";
+  const pathname = usePathname();
+  const activePath = useMemo(() => pathname?.split("?")[0], [pathname]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -24,6 +27,11 @@ export default function Header({ site }: Props) {
     }
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
+
+  useEffect(() => {
+    // Close menu on route change
+    setOpen(false);
+  }, [activePath]);
 
   useEffect(() => {
     if (!open) return;
@@ -61,7 +69,12 @@ export default function Header({ site }: Props) {
         </Link>
         <nav id="site-nav" aria-label="Primary" className="hidden items-center gap-6 text-sm font-semibold text-ink-muted md:flex">
           {site.nav.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-ink focus-ring">
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`hover:text-ink focus-ring ${activePath === item.href ? "text-ink" : ""}`}
+              aria-current={activePath === item.href ? "page" : undefined}
+            >
               {item.label}
             </Link>
           ))}
