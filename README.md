@@ -50,6 +50,12 @@ Create `.env.local` from `.env.example`.
 - Health/uptime: monitor `/api/health` (returns JSON) and configure alerts in your monitoring tool (e.g., UptimeRobot/StatusCake).
 - Roll forward/back: prefer revert or redeploy previous commit in Vercel; keep lockfile and CI green before deploy.
 - Images: use `next/image` for new assets, include `alt`, and keep SVGs/patterns lightweight.
+- Placeholder swaps:
+  - Hero/section photos: replace `/public/placeholders/*.svg` with real images (recommended min ~1600px wide for hero, 800px for sections). Update `heroImage`, `heroImageAlt`, `heroImageCaption`, `heroImageCredit` in Markdown frontmatter.
+  - Model graphic: replace `/public/placeholders/model.svg` with your diagram and set `modelGraphic`, `modelGraphicAlt`.
+  - Partner logos: replace `/public/partners/*.svg` (keep transparent background if possible), update `content/site.md` partners with `name`, `logo`, `alt`, `descriptor`, and optional `href`.
+  - Leadership photos: set `photo` and `photoAlt` in `content/site.md` leaders; keep images optimized (~800x600) and descriptive alt text.
+  - Governance docs: replace `public/docs/*.pdf` placeholders with actual files and ensure `content/site.md` governanceDocs point to the right filenames.
 
 ## Security & Maintenance
 - Track dependency updates monthly; prioritize Next.js, React, TypeScript, and eslint-config-next.
@@ -60,3 +66,8 @@ Create `.env.local` from `.env.example`.
 - Use feature branches and open PRs.
 - CI runs lint, typecheck, and build on push/PR.
 - Keep the lockfile (`package-lock.json`) committed for reproducible installs.
+- Publish checklist:
+  - Update Markdown content/frontmatter (CTAs, hero images, metrics, pillars, timeline, partners, leaders, governance docs).
+  - Replace placeholders (images/logos/docs) as needed.
+  - Run `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
+  - Deploy and verify pages, forms, and `/api/health`.
