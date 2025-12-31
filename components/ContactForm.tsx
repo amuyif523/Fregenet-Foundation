@@ -36,8 +36,12 @@ export default function ContactForm() {
         throw new Error(body.error || "Unable to submit inquiry.");
       }
 
+      const body = await response.json();
       setStatus("sent");
       form.reset();
+      if (body?.message) {
+        setError(null);
+      }
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Unable to submit inquiry.");
@@ -96,7 +100,7 @@ export default function ContactForm() {
           />
         </label>
         <p id="contact-hint" className="text-xs text-ink-muted">
-          We reply within 3 business days.
+          We reply within 3 business days. Your details are used only to respond to your inquiry.
         </p>
         <div className="flex items-center gap-4">
           <button

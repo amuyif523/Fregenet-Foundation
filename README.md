@@ -30,6 +30,10 @@ Visit http://localhost:3000.
 Create `.env.local` from `.env.example`.
 - `SITE_URL` – base URL for canonical/OG metadata (e.g., https://www.fregenetfoundation.org).
 - `CONTACT_WEBHOOK_URL` – optional. If set, contact form submissions POST here; otherwise they are logged server-side.
+- SMTP intake (required for email delivery):
+  - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
+  - `CONTACT_FROM` – e.g., "Fregenet Foundation <noreply@fregenetfoundation.org>"
+  - `CONTACT_TO` – destination mailbox for intake (e.g., info@fregenetfoundation.org)
 
 ## Project Structure (key paths)
 - `/app` – Next.js routes
