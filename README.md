@@ -19,6 +19,7 @@ Visit http://localhost:3000.
 - `npm run dev` – start dev server
 - `npm run lint` – ESLint via Next
 - `npm run typecheck` – TypeScript type checks
+- `npm test` – sanitize pipeline tests
 - `npm run build` – production build
 - `npm start` – run compiled app
 

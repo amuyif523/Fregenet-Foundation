@@ -1,9 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 import { cache } from "react";
+import { renderMarkdown } from "./markdown";
 
 export type PageContent = {
   slug: string;
@@ -37,8 +36,7 @@ export async function loadContent(slug: string): Promise<PageContent> {
   const file = await fs.readFile(filePath, "utf-8");
   const { content, data } = matter(file);
 
-  const processed = await remark().use(html).process(content);
-  const htmlContent = processed.toString();
+  const htmlContent = await renderMarkdown(content);
 
   const title = assertString(data.title, "title");
   const description = assertString(data.description, "description");
